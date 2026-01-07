@@ -9,7 +9,7 @@
     <Authors>Relorer</Authors>
     <Description>
         QuestPDF.HTML is an extension for QuestPDF that allows to generate PDF from HTML. 
-        Originally created by Relorer (https://github.com/Relorer/HTMLToQPDF), Modified by JeremyVm.
+        Originally created by Relorer (https://github.com/Relorer/HTMLToQPDF).
     </Description>
     <PackageProjectUrl>https://github.com/JeremyVm/HTMLToQPDF</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
@@ -18,9 +18,13 @@
     <RepositoryUrl>https://github.com/JeremyVm/HTMLToQPDF</RepositoryUrl>
     <PackageTags>pdf, file, export, generate, generation, tool, create, creation, render, document, format, quest, html, library, converter, open, source, free, standard, core</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.4.4</AssemblyVersion>
-    <FileVersion>1.4.4</FileVersion>
-    <Version>1.4.4</Version>
+    <AssemblyVersion>1.4.5</AssemblyVersion>
+    <FileVersion>1.4.5</FileVersion>
+    <Version>1.4.5</Version>
+    <PackageReleaseNotes>
+v1.4.5:
+- Fixed non-breaking spaces (nbsp) being removed in nested inline elements
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
