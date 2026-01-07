@@ -24,12 +24,15 @@ namespace HTMLQuestPDF.Utils
 
         private static string RemoveSpacesBetweenElements(string html)
         {
-            return Regex.Replace(html, @">\s+<", _ => @"><").Replace("<space></space>", "<space> </space>");
+            // Use [ \t\r\n]+ instead of \s+ to preserve non-breaking spaces (U+00A0)
+            // which are intentional content from &nbsp; entities
+            return Regex.Replace(html, @">[ \t\r\n]+<", _ => @"><").Replace("<space></space>", "<space> </space>");
         }
 
         private static string RemoveSpacesAroundBr(string html)
         {
-            return Regex.Replace(html, @"\s+<\/?br\s*\/?>\s+", _ => @$"<br>");
+            // Use [ \t\r\n]+ instead of \s+ to preserve non-breaking spaces (U+00A0)
+            return Regex.Replace(html, @"[ \t\r\n]+<\/?br[ \t\r\n]*\/?>[ \t\r\n]+", _ => @$"<br>");
         }
 
         private static string WrapSpacesAfterLineElement(string html)
