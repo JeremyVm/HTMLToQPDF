@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 using HTMLQuestPDF.Extensions;
+using HTMLQuestPDF.Utils;
 using HTMLToQPDF.Components;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
@@ -112,7 +113,20 @@ namespace HTMLQuestPDF.Components
 
         public TextStyle GetTextStyle(HtmlNode element)
         {
-            return textStyles.TryGetValue(element.Name.ToLower(), out TextStyle? style) ? style : TextStyle.Default;
+            // Start with tag-based style or default
+            var style = textStyles.TryGetValue(element.Name.ToLower(), out TextStyle? tagStyle)
+                ? tagStyle
+                : TextStyle.Default;
+
+            // Apply inline CSS styles if present
+            var styleAttr = element.GetAttributeValue("style", null);
+            if (!string.IsNullOrEmpty(styleAttr))
+            {
+                var cssStyles = CssParser.ParseStyleAttribute(styleAttr);
+                style = CssParser.ApplyTextStyles(style, cssStyles);
+            }
+
+            return style;
         }
     }
 }

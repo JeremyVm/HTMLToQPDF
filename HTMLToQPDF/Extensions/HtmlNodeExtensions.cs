@@ -94,7 +94,12 @@ namespace HTMLQuestPDF.Extensions
 
         public static bool IsEmpty(this HtmlNode node)
         {
-            return string.IsNullOrEmpty(node.InnerText) && !node.IsImg() && !node.IsBr();
+            return string.IsNullOrEmpty(node.InnerText) && !node.IsImg() && !node.IsBr() && !node.IsHr();
+        }
+
+        public static bool IsHr(this HtmlNode node)
+        {
+            return node.Name.ToLower() == "hr";
         }
 
         public static bool IsImg(this HtmlNode node)

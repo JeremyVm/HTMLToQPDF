@@ -2,6 +2,7 @@
 using System.Linq;
 using HtmlAgilityPack;
 using HTMLQuestPDF.Extensions;
+using HTMLQuestPDF.Utils;
 using HTMLToQPDF.Components;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
@@ -37,7 +38,21 @@ namespace HTMLQuestPDF.Components
 
         protected virtual IContainer ApplyStyles(IContainer container)
         {
-            return args.ContainerStyles.TryGetValue(node.Name.ToLower(), out var style) ? style(container) : container;
+            // Apply tag-based styles first
+            if (args.ContainerStyles.TryGetValue(node.Name.ToLower(), out var style))
+            {
+                container = style(container);
+            }
+
+            // Apply inline CSS styles if present
+            var styleAttr = node.GetAttributeValue("style", null);
+            if (!string.IsNullOrEmpty(styleAttr))
+            {
+                var cssStyles = CssParser.ParseStyleAttribute(styleAttr);
+                container = CssParser.ApplyContainerStyles(container, cssStyles);
+            }
+
+            return container;
         }
 
         protected virtual void ComposeSingle(IContainer container)

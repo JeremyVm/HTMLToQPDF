@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Title>QuestPDF.HTML</Title>
     <Company></Company>
-    <Authors>Relorer</Authors>
+    <Authors>Relorer, JeremyVm</Authors>
     <Description>
         QuestPDF.HTML is an extension for QuestPDF that allows to generate PDF from HTML. 
         Originally created by Relorer (https://github.com/Relorer/HTMLToQPDF).
@@ -18,12 +18,18 @@
     <RepositoryUrl>https://github.com/JeremyVm/HTMLToQPDF</RepositoryUrl>
     <PackageTags>pdf, file, export, generate, generation, tool, create, creation, render, document, format, quest, html, library, converter, open, source, free, standard, core</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.4.5</AssemblyVersion>
-    <FileVersion>1.4.5</FileVersion>
-    <Version>1.4.5</Version>
+    <AssemblyVersion>1.5.0</AssemblyVersion>
+    <FileVersion>1.5.0</FileVersion>
+    <Version>1.5.0</Version>
     <PackageReleaseNotes>
-v1.4.5:
-- Fixed non-breaking spaces (nbsp) being removed in nested inline elements
+v1.5.0:
+- Added new HTML tags: span, blockquote, pre, code, hr, mark, abbr, kbd, samp, var, q
+- Added CSS inline style parsing support for text and container properties
+- Supported CSS properties: color, background-color, font-size, font-weight, font-style, font-family, text-decoration, padding, margin, border, width, height, text-align
+- Supported color formats: hex, rgb(), rgba(), named colors
+- Supported length units: px, pt, em, rem, cm, mm, in, %
+
+For full changelog see: https://github.com/JeremyVm/HTMLToQPDF/blob/master/CHANGELOG.md
     </PackageReleaseNotes>
   </PropertyGroup>
 
@@ -35,8 +41,8 @@ v1.4.5:
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.74" />
-    <PackageReference Include="QuestPDF" Version="2025.12.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+    <PackageReference Include="QuestPDF" Version="2025.12.3" />
   </ItemGroup>
 
   <ItemGroup>

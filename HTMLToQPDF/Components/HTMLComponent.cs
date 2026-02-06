@@ -7,6 +7,7 @@ using HTMLQuestPDF.Extensions;
 using HTMLQuestPDF.Utils;
 using HTMLToQPDF.Utils;
 using QuestPDF.Fluent;
+using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
 namespace HTMLToQPDF.Components
@@ -39,7 +40,14 @@ namespace HTMLToQPDF.Components
             { "a", TextStyle.Default.Underline() },
             { "sup", TextStyle.Default.Superscript() },
             { "sub", TextStyle.Default.Subscript() },
-
+            // New tags
+            { "code", TextStyle.Default.FontFamily("Courier New").BackgroundColor(Colors.Grey.Lighten4) },
+            { "kbd", TextStyle.Default.FontFamily("Courier New").BackgroundColor(Colors.Grey.Lighten3) },
+            { "samp", TextStyle.Default.FontFamily("Courier New") },
+            { "var", TextStyle.Default.Italic() },
+            { "mark", TextStyle.Default.BackgroundColor(Colors.Yellow.Lighten3) },
+            { "q", TextStyle.Default.Italic() },
+            { "abbr", TextStyle.Default.Underline() },
         };
 
         public Dictionary<string, Func<IContainer, IContainer>> ContainerStyles { get; } = new Dictionary<string, Func<IContainer, IContainer>>()
